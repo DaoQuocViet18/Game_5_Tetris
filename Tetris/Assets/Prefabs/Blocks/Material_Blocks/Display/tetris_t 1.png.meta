@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d5b9f34c12d064f4995d40ebb482c8ab
+guid: a471036aca2009f428f35bb7eb585a2f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,85 +117,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tetris_long_0
+      name: tetris_t 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 200
-        height: 200
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c262c42640772304e95b87ba78fd7a8b
-      internalID: -1977272055
+      spriteID: 1c38dd8136f9bb445bcfb4742d454451
+      internalID: -1067128619
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tetris_long_1
+      name: tetris_t 1_1
       rect:
         serializedVersion: 2
-        x: 200
+        x: 120
         y: 0
-        width: 200
-        height: 200
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0697cdd2b05891419a2091ea50fb70f
-      internalID: -1692327834
+      spriteID: f6032eabd0d6fc04eb5f228846695ae4
+      internalID: -1467862356
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tetris_long_2
+      name: tetris_t 1_2
       rect:
         serializedVersion: 2
-        x: 400
+        x: 240
         y: 0
-        width: 200
-        height: 200
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d7520f4b516b814980e5cd7f40e17b8
-      internalID: 1070483520
+      spriteID: f74b451fb8cdf4c4a9860e228e3f86f8
+      internalID: -781355918
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tetris_long_3
+      name: tetris_t 1_3
       rect:
         serializedVersion: 2
-        x: 600
+        x: 360
         y: 0
-        width: 200
-        height: 200
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eba34505fd8dc7b4d996e44d95d3e314
-      internalID: 238124417
+      spriteID: 1cb96ea5f45be204b852113b0f461241
+      internalID: -1010388179
       vertices: []
       indices: 
       edges: []
@@ -211,10 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tetris_long_1: -1692327834
-      tetris_long_0: -1977272055
-      tetris_long_3: 238124417
-      tetris_long_2: 1070483520
+      tetris_t 1_0: -1067128619
+      tetris_t 1_2: -781355918
+      tetris_t 1_3: -1010388179
+      tetris_t 1_1: -1467862356
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

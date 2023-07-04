@@ -4,24 +4,22 @@ using UnityEngine;
 
 public class Display_blocks : MonoBehaviour
 {
-    public GameObject[] Block;
-    private int number_block;
-    // Start is called before the first frame update
+    [SerializeField] private Transform[] childTransforms;
+    [SerializeField] private GameObject[] Block;
+    public int number_block;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
+        childTransforms = GetComponentsInChildren<Transform>();
+        Block = new GameObject[childTransforms.Length - 1];
+        for (int i = 1; i < childTransforms.Length; i++)
         {
-            ActivateRandomObject();
+            Block[i - 1] = childTransforms[i].gameObject;
+            childTransforms[i].gameObject.SetActive(false);
         }
     }
 
-    private void ActivateRandomObject()
+    public void ActivateRandomObject()
     {
 
         if (Block.Length > 0)

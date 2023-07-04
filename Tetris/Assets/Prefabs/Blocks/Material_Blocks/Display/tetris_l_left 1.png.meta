@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 98389d417a9565d48905cc326be41332
+guid: b7c7139cecba3704e81da14fa5017440
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tetris_l_left_0
+      name: tetris_l_left 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 290bc36945515214a9304e35038dbb59
-      internalID: -1225628740
+      spriteID: 7f2f51a56043c94449076e4516c6d394
+      internalID: -400788872
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tetris_l_left_1
+      name: tetris_l_left 1_1
       rect:
         serializedVersion: 2
         x: 120
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a7ba3312cadb244b8ac1a3d0c86f52c
-      internalID: -1457500427
+      spriteID: 8c9725f87ae9f5e4b97beaa69f3b25f1
+      internalID: -1193546111
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tetris_l_left_2
+      name: tetris_l_left 1_2
       rect:
         serializedVersion: 2
         x: 240
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4236034a92df6a42a9b2d7e4274e6e7
-      internalID: -1214306536
+      spriteID: 69ccf16e37ffead479f40a6376dae2f5
+      internalID: 845608673
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tetris_l_left_3
+      name: tetris_l_left 1_3
       rect:
         serializedVersion: 2
         x: 360
@@ -194,8 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b40901e3d32c0534b8d7529ae07287c1
-      internalID: -324490045
+      spriteID: f1a43e80319e148478370234d31a9cf7
+      internalID: -940495770
       vertices: []
       indices: 
       edges: []
@@ -211,10 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tetris_l_left_0: -1225628740
-      tetris_l_left_2: -1214306536
-      tetris_l_left_3: -324490045
-      tetris_l_left_1: -1457500427
+      tetris_l_left 1_0: -400788872
+      tetris_l_left 1_3: -940495770
+      tetris_l_left 1_1: -1193546111
+      tetris_l_left 1_2: 845608673
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
