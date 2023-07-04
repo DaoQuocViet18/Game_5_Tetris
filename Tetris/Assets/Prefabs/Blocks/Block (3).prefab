@@ -160,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33187cd3d0b7bb446b133097c3c80ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed_move: 0.5
   speed_Down: 0.5
   stop: 0
   block_junior: []
@@ -176,9 +177,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastDistance: 0.25
-  layerMask:
+  layerMask_Stop:
     serializedVersion: 2
     m_Bits: 8
+  raycastDistance_left_right: 0.25
 --- !u!1 &2372675308389676915
 GameObject:
   m_ObjectHideFlags: 0
