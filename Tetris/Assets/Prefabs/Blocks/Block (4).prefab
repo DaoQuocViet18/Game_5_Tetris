@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4471067589542525931}
   - component: {fileID: 936434572926017267}
   m_Layer: 0
-  m_Name: tetris_s_1_0
+  m_Name: tetris_s_1_0 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 544859039350531326}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4471067589542525931
 SpriteRenderer:
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 5897529047871973037}
   - component: {fileID: 4786791105413496135}
   m_Layer: 0
-  m_Name: tetris_s_1_0
+  m_Name: tetris_s_1_0 (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +142,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 544859039350531326}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5897529047871973037
 SpriteRenderer:
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 7699875027079788617}
   - component: {fileID: 1977207906019798939}
   m_Layer: 0
-  m_Name: tetris_s_1_0
+  m_Name: tetris_s_1_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -253,7 +253,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 544859039350531326}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7699875027079788617
 SpriteRenderer:
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 2948529204815364252}
   - component: {fileID: 7475113536377940970}
   m_Layer: 0
-  m_Name: tetris_s_1_0
+  m_Name: tetris_s_1_0 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -474,9 +474,9 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6642647609235251155}
   - {fileID: 6570415010083663448}
   - {fileID: 5864723076898724025}
-  - {fileID: 6642647609235251155}
   - {fileID: 3020405108878075472}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -497,6 +497,7 @@ MonoBehaviour:
   speed_Down: 0.5
   stop: 0
   block_junior: []
+  time_to_Stop: 0.5
 --- !u!114 &5627003711650172093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,3 +515,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   raycastDistance_left_right: 0.25
+  limit_stuck_block_number: 3

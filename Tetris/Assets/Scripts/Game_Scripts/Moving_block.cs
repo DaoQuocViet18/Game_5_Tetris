@@ -63,9 +63,9 @@ public class Moving_block : MonoBehaviour
 
     private void move()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            transform.Rotate(0, 0, transform.position.z + 90f);
+        if (Input.GetKeyDown(KeyCode.UpArrow) && border.check_side_block() == true && gameObject.name != "Block (6)(Clone)")
+        {                      
+            transform.Rotate(0, 0, transform.position.z - 90f, Space.World);
             border.check_border_block();
         }    
 

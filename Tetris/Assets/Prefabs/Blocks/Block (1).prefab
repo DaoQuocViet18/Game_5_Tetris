@@ -30,8 +30,8 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6985273325414008150}
   - {fileID: 135374179102222814}
+  - {fileID: 6985273325414008150}
   - {fileID: 3360558110667841447}
   - {fileID: 835800110968922436}
   m_Father: {fileID: 0}
@@ -52,7 +52,12 @@ MonoBehaviour:
   speed_move: 0.5
   speed_Down: 0.5
   stop: 0
-  block_junior: []
+  block_junior:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  time_to_Stop: 0.5
 --- !u!114 &6389091065361536573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,6 +75,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   raycastDistance_left_right: 0.25
+  block_Test:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &135374179102222813
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,7 +93,7 @@ GameObject:
   - component: {fileID: 135374179102222815}
   - component: {fileID: 7101805393552957557}
   m_Layer: 0
-  m_Name: tetris_l_left_0
+  m_Name: tetris_l_left_0 (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,7 +112,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 135374178604148476}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &135374179102222815
 SpriteRenderer:
@@ -193,7 +204,7 @@ GameObject:
   - component: {fileID: 382968387226334406}
   - component: {fileID: 1452564109586455826}
   m_Layer: 0
-  m_Name: tetris_l_left_0
+  m_Name: tetris_l_left_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -212,7 +223,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 135374178604148476}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &382968387226334406
 SpriteRenderer:
@@ -304,7 +315,7 @@ GameObject:
   - component: {fileID: 4546923680820925009}
   - component: {fileID: 7383608572785262705}
   m_Layer: 0
-  m_Name: tetris_l_left_0
+  m_Name: tetris_l_left_0 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -415,7 +426,7 @@ GameObject:
   - component: {fileID: 1802749005486478442}
   - component: {fileID: 7389161996519069469}
   m_Layer: 0
-  m_Name: tetris_l_left_0
+  m_Name: tetris_l_left_0 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3140231556914317803}
   - component: {fileID: 2380954226116212877}
   m_Layer: 0
-  m_Name: tetris_l_right_0
+  m_Name: tetris_l_right_0  (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8048756817113630544}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3140231556914317803
 SpriteRenderer:
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 1555622228202855366}
   - component: {fileID: 6289471658432685478}
   m_Layer: 0
-  m_Name: tetris_l_right_0
+  m_Name: tetris_l_right_0 (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +142,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8048756817113630544}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1555622228202855366
 SpriteRenderer:
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 6255322423019356079}
   - component: {fileID: 2267764749461292826}
   m_Layer: 0
-  m_Name: tetris_l_right_0
+  m_Name: tetris_l_right_0  (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -363,8 +363,8 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8157573769696316366}
   - {fileID: 1774913932045291221}
+  - {fileID: 8157573769696316366}
   - {fileID: 879406476450834882}
   - {fileID: 3842188618730262505}
   m_Father: {fileID: 0}
@@ -386,6 +386,7 @@ MonoBehaviour:
   speed_Down: 0.5
   stop: 0
   block_junior: []
+  time_to_Stop: 0.5
 --- !u!114 &457394458331398393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,6 +404,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   raycastDistance_left_right: 0.25
+  limit_stuck_block_number: 3
 --- !u!1 &4790050328268467545
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,7 +417,7 @@ GameObject:
   - component: {fileID: 9050582006805843757}
   - component: {fileID: 1041302412984056084}
   m_Layer: 0
-  m_Name: tetris_l_right_0
+  m_Name: tetris_l_right_0  (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
