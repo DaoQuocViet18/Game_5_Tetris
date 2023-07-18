@@ -15,7 +15,7 @@ public class Moving_block : MonoBehaviour
 
     [Header("Move down")]
     public float speed_move = 0.5f;
-    public float speed_Down = 1;
+    public float speed_Down = 0.5f;
 
     [Header("Stop")]
     public bool stop = false;
@@ -39,8 +39,8 @@ public class Moving_block : MonoBehaviour
         border = GetComponent<Border>();
         spawn_Block = GameObject.Find("Spawn_block").GetComponent <Spawn_block>();
         display_Blocks = GameObject.Find("Display_board").GetComponent<Display_blocks>();
+        time_to_Stop = spawn_Block.time_to_Stop_Present;
         move_Down_Slow();
-        //InvokeRepeating("move_Down_Slow", 0.5f, 1);
     }
 
     void Update()
@@ -51,8 +51,8 @@ public class Moving_block : MonoBehaviour
 
     public void spawn()
     {
-            spawn_Block.SpawnObject();
-            display_Blocks.ActivateRandomObject();    
+        spawn_Block.SpawnObject();
+        display_Blocks.ActivateRandomObject();
     }
 
     public void move_Down_Slow()

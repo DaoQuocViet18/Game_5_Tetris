@@ -1,22 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Border : MonoBehaviour
 {
     private Moving_block moving_Block;
     [Header("Down")]
-    public float raycastDistance = 1f;
+    public float raycastDistance = 0.25f;
     public LayerMask layerMask_Stop;
 
     [Header("Left Right")]
-    public float raycastDistance_left_right = 1f;
+    public float raycastDistance_left_right = 0.25f;
 
     [Header("Turn")]
     public GameObject[] block_Test;
+
+    [Header("Delete")]
+    private Delete_block delete_Block;
+    private float address_Destroy_Y = -5f;
+    private bool cancelled;
+    private int quantity_destroy;
     void Start()
     {
+        delete_Block = GameObject.Find("Block_detection").GetComponent<Delete_block>();
         moving_Block = GetComponent<Moving_block>();
 
         Transform[] childTransforms = GameObject.Find(gameObject.name + " -Test").GetComponentsInChildren<Transform>();
@@ -27,24 +35,55 @@ public class Border : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (!moving_Block.stop)
+            foreach (GameObject block in moving_Block.block_junior)
+                Debug.DrawRay(block.transform.position, Vector2.down * raycastDistance * 5, Color.green);
+    }
+
     public void time_delay_to_stop()
     {
         if (!moving_Block.stop)
             foreach (GameObject block in moving_Block.block_junior)
-                if (Physics2D.Raycast(block.transform.position, Vector2.down, raycastDistance, layerMask_Stop) && !moving_Block.stop)
+                if (Physics2D.Raycast(block.transform.position, Vector2.down, raycastDistance, layerMask_Stop))
                 {
-                    moving_Block.stop = true;
-                    foreach (GameObject jun in moving_Block.block_junior)
-                        jun.gameObject.layer = 3;
-                    moving_Block.Invoke("spawn", 1);
+                    stop_and_destroy();
                     break;
                 }
 
         if (!moving_Block.stop)
-            moving_Block.move_Down_Slow();   
+            moving_Block.move_Down_Slow();
+
     }
 
-    #region kiểm tra 
+    private void stop_and_destroy()
+    {
+        moving_Block.stop = true;
+        foreach (GameObject jun in moving_Block.block_junior)
+        {
+            jun.gameObject.layer = 3;
+            delete_Block.transform.position = new Vector2(delete_Block.transform.position.x, jun.transform.position.y);
+            if (delete_Block.enough_Counting())
+            {
+                if (delete_Block.transform.position.y >= address_Destroy_Y)
+                    address_Destroy_Y = delete_Block.transform.position.y;
+                delete_Block.destroy_Block();
+                cancelled = true;
+                quantity_destroy++;
+            }
+        }
+
+        if (cancelled)
+            do
+            {
+                delete_Block.move_Block_after_destroy(address_Destroy_Y);
+                quantity_destroy--;
+            } while (quantity_destroy > 0);
+
+        moving_Block.Invoke("spawn", 0.5f);
+    } 
+
     // kiểm tra xem có bị dính vào tường ko
     public void check_border_block ()
     {
@@ -65,7 +104,7 @@ public class Border : MonoBehaviour
     // kiểm tra xem nếu quay thì có xảy ta va chạm không
     public bool check_side_block()
     {
-        #region sự di chuyển block thay thế 
+        // sự di chuyển của block thay thế 
         block_Test[0].transform.position = transform.position;
         block_Test[0].transform.rotation = transform.rotation;
         block_Test[0].transform.Rotate(0, 0, transform.position.z - 90f, Space.World);
@@ -73,8 +112,8 @@ public class Border : MonoBehaviour
         foreach (GameObject block in block_Test)
             if (Physics2D.Raycast(block.transform.position, Vector2.left, raycastDistance_left_right * 0.5f, layerMask_Stop))
                 block_Test[0].transform.Translate(Vector2.up * moving_Block.speed_Down, Space.World);
-        #endregion
 
+        // kiểm tra 
         foreach (GameObject block in block_Test)
             if (Physics2D.Raycast(block.transform.position, Vector2.left, raycastDistance_left_right * 0.5f, layerMask_Stop))
                 return false;
@@ -85,7 +124,7 @@ public class Border : MonoBehaviour
     public bool check_block_Down()
     {
         foreach (GameObject block in moving_Block.block_junior)
-            if (Physics2D.Raycast(block.transform.position, Vector2.down, raycastDistance * 3, layerMask_Stop))
+            if (Physics2D.Raycast(block.transform.position, Vector2.down, raycastDistance * 5, layerMask_Stop))
                 return true;
         return false;
     }
@@ -107,5 +146,4 @@ public class Border : MonoBehaviour
                 return false;
         return true;
     }
-    #endregion
 }

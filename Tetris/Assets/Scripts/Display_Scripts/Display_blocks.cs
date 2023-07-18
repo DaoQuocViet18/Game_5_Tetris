@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Display_blocks : MonoBehaviour
 {
     [SerializeField] private Transform[] childTransforms;
     [SerializeField] private GameObject[] Block;
     public int number_block;
+
+    private int score = 0; 
+    public TextMeshProUGUI scoreText;
 
     void Start()
     {
@@ -30,5 +35,11 @@ public class Display_blocks : MonoBehaviour
             GameObject randomObject = Block[number_block];
             randomObject.SetActive(true);
         }
+    }
+
+    public void IncreaseScore(int amount)
+    {
+        score += amount;
+        scoreText.text = score.ToString();
     }
 }
