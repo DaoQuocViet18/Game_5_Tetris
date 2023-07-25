@@ -6,7 +6,6 @@ using TMPro;
 
 public class Display_blocks : MonoBehaviour
 {
-    [SerializeField] private Transform[] childTransforms;
     [SerializeField] private GameObject[] Block;
     public int number_block;
 
@@ -15,7 +14,7 @@ public class Display_blocks : MonoBehaviour
 
     void Start()
     {
-        childTransforms = GetComponentsInChildren<Transform>();
+        Transform[] childTransforms = GetComponentsInChildren<Transform>();
         Block = new GameObject[childTransforms.Length - 1];
         for (int i = 1; i < childTransforms.Length; i++)
         {

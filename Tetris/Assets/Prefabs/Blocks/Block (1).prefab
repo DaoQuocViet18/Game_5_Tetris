@@ -51,13 +51,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed_move: 0.5
   speed_Down: 0.5
+  stop_Game: 0
   stop: 0
-  block_junior:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  time_to_Stop: 0.5
+  block_junior: []
 --- !u!114 &6389091065361536573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,13 +70,9 @@ MonoBehaviour:
   layerMask_Stop:
     serializedVersion: 2
     m_Bits: 8
+  time_to_Delay: 0
   raycastDistance_left_right: 0.25
-  block_Test:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  block_Test: []
 --- !u!1 &135374179102222813
 GameObject:
   m_ObjectHideFlags: 0

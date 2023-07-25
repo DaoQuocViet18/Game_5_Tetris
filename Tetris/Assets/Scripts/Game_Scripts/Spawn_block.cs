@@ -9,8 +9,10 @@ public class Spawn_block : MonoBehaviour
     [SerializeField] private Transform spawnPoint; // Vị trí spawn
     public int quantity_Spawn = 0;
     public float time_to_Stop_Present = 0.5f;
+
     [Header("Signal")]
-    public Display_blocks display_Blocks;
+    public Display_blocks display_Blocks; 
+
     void Start()
     {
         spawnPoint = GetComponent<Transform>();
@@ -22,7 +24,7 @@ public class Spawn_block : MonoBehaviour
     {
         // Sinh ra đối tượng tại vị trí spawnPoint
         Instantiate(objectPrefab[display_Blocks.number_block], spawnPoint.position, spawnPoint.rotation);
-        if (quantity_Spawn == 10)
+        if (quantity_Spawn == 10 && time_to_Stop_Present > 0.5f/4)
         {
             quantity_Spawn = 0;
             time_to_Stop_Present /= 1.25f;

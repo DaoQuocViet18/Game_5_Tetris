@@ -466,7 +466,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d35c6665203866441af130efe5fc43f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  childTransforms: []
   Block: []
   number_block: 0
   scoreText: {fileID: 57980498}
@@ -568,6 +567,8 @@ MonoBehaviour:
   - {fileID: 8066014766532516973, guid: fa6853b0e6a2a8141a35db2122d2d6be, type: 3}
   - {fileID: 6487360836715806533, guid: b6aec0ba88b82124283bfac987e31139, type: 3}
   spawnPoint: {fileID: 0}
+  quantity_Spawn: 0
+  time_to_Stop_Present: 0.5
   display_Blocks: {fileID: 344161761}
 --- !u!4 &391903962
 Transform:
