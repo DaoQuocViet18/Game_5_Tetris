@@ -124,7 +124,7 @@ public class Moving_block : MonoBehaviour
             if (item.transform.position.y >= 4)
             {
                 stop_Game = true;
-                QuitGame();
+                spawn_Block.EndGame();
                 goto End;
             }    
 
@@ -171,13 +171,4 @@ public class Moving_block : MonoBehaviour
         return new Vector2(0, -shortestDistance + 0.25f);
     }
 
-    private void QuitGame()
-    {
-        // Kiểm tra xem ứng dụng đang chạy trong trình duyệt hay không.
-        #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-        #else
-                        Application.Quit();
-        #endif
-    }
 }

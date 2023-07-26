@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Spawn_block : MonoBehaviour
 {
@@ -31,6 +32,11 @@ public class Spawn_block : MonoBehaviour
             time_to_Stop_Present /= 1.25f;
         }    
         quantity_Spawn++;
+    }
+
+    public void EndGame()
+    {
+        SceneManager.LoadScene("StartScene");
     }
 }
 
