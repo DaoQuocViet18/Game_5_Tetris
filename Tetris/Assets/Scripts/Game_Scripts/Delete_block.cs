@@ -26,7 +26,7 @@ public class Delete_block : MonoBehaviour
         for (int i = 1; i <= 15; i++)
         {
             Vector2 tra = new Vector2(transform.position.x + i * 0.5f, transform.position.y);
-            if (Physics2D.Raycast(tra, Vector2.left, raycastDistance, layerMask_Stop))
+            if (Physics2D.Raycast(tra, Vector2.down, raycastDistance, layerMask_Stop))
                 collisionCount++;   
             else
                 return false;

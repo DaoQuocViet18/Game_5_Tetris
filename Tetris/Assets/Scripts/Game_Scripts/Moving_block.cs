@@ -77,7 +77,7 @@ public class Moving_block : MonoBehaviour
             Vector2 teleport_Distance = Teleport_Distance();
             transform.Translate(teleport_Distance, Space.World);
 
-            Stop_and_destroy();
+            Invoke("Stop_and_destroy", 0.1f);
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && border.Check_next_move() == true && gameObject.name != "Block (6)(Clone)")
@@ -133,6 +133,7 @@ public class Moving_block : MonoBehaviour
         {
             jun.gameObject.layer = 3;
             delete_Block.transform.position = new Vector2(delete_Block.transform.position.x, jun.transform.position.y);
+            Debug.Log("destroy: " + delete_Block.enough_Counting());
             if (delete_Block.enough_Counting())
             {
                 if (delete_Block.transform.position.y >= address_Destroy_Y)
