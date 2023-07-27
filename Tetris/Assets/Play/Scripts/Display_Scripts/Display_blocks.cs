@@ -9,7 +9,7 @@ public class Display_blocks : MonoBehaviour
     [SerializeField] private GameObject[] Block;
     public int number_block;
 
-    private int score = 0; 
+    public int score = 0; 
     public TextMeshProUGUI scoreText;
 
     void Start()

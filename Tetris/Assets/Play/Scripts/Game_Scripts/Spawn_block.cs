@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Spawn_block : MonoBehaviour
 {
@@ -13,16 +15,24 @@ public class Spawn_block : MonoBehaviour
     public float time_to_Stop_Present = 0.5f;
 
     [Header("Signal")]
-    public Display_blocks display_Blocks; 
+    public Display_blocks display_Blocks;
+
+    [Header("Sound")]
+    public AudioClip gameOver_Sound;
+    public AudioSource audioSource;
+
+    [Header("GameOver")]
+    public GameObject gameOver;
+    public TextMeshProUGUI gameOver_Text;
 
     void Start()
     {
         spawnPoint = GetComponent<Transform>();
-        display_Blocks.ActivateRandomObject();
-        Invoke("SpawnObject", 2f);
+        audioSource = GetComponent<AudioSource>();
+        display_Blocks.ActivateRandomObject();       
     }
 
-    public  void SpawnObject()
+    public void SpawnObject()
     {
         // Sinh ra đối tượng tại vị trí spawnPoint
         Instantiate(objectPrefab[display_Blocks.number_block], spawnPoint.position, spawnPoint.rotation);
@@ -35,6 +45,15 @@ public class Spawn_block : MonoBehaviour
     }
 
     public void EndGame()
+    {
+        audioSource.Pause(); // Tạm dừng phát âm thanh
+        audioSource.PlayOneShot(gameOver_Sound);
+
+        gameOver.SetActive(true);
+        gameOver_Text.text = "SCORE: " + display_Blocks.score.ToString();
+    }
+
+    public void comeStartScene()
     {
         SceneManager.LoadScene("StartScene");
     }

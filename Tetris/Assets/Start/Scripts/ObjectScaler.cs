@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ObjectScaler : MonoBehaviour
 {
-    public RectTransform canvasRectTransform; // RectTransform của Canvas
-    public RectTransform referenceRectTransform; // RectTransform của đối tượng tham chiếu để tính tỉ lệ
+    private RectTransform canvasRectTransform; // RectTransform của Canvas
+    private RectTransform referenceRectTransform; // RectTransform của đối tượng tham chiếu để tính tỉ lệ
+
+    public  TextMeshProUGUI text;
 
     // Tỉ lệ giữa kích thước của đối tượng tham chiếu và kích thước màn hình
     private float scale_reference_Ratio;
@@ -20,7 +23,19 @@ public class ObjectScaler : MonoBehaviour
         referenceRectTransform = GetComponent<RectTransform>();
 
         // Tính toán tỉ lệ giữa kích thước của đối tượng tham chiếu và kích thước màn hình
-        scaleYRatio = referenceRectTransform.rect.height / canvasRectTransform.rect.height;
+        if (gameObject.name == "Start_Button" || gameObject.name == "Home_Button")
+        {
+            scaleYRatio = 0.1f;
+        }
+        else if (gameObject.name == "Image (5)")
+        {
+            scaleYRatio = 0.35f;
+        }
+        else
+        {
+            scaleYRatio = 0.2f;
+        }
+
         scale_reference_Ratio = referenceRectTransform.rect.width / referenceRectTransform.rect.height;
 
         // Tính toán tỷ lệ giữa tọa độ của đối tượng tham chiếu và tọa độ màn hình Canvas
@@ -42,6 +57,11 @@ public class ObjectScaler : MonoBehaviour
         // Tính toán kích thước mới của đối tượng dựa trên tỉ lệ so với đối tượng tham chiếu
         float newHeight = canvasRectTransform.rect.height * scaleYRatio;
         float newWidth = newHeight * scale_reference_Ratio;
+
+        if (gameObject.name == "Start_Button" || gameObject.name == "Home_Button")
+        {
+            text.fontSize = newHeight * 36 / 54;
+        }
 
         // Đặt kích thước mới cho bản thân đối tượng
         RectTransform rectTransform = GetComponent<RectTransform>();
