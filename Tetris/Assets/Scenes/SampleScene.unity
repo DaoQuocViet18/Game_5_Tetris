@@ -567,7 +567,7 @@ MonoBehaviour:
   - {fileID: 8066014766532516973, guid: fa6853b0e6a2a8141a35db2122d2d6be, type: 3}
   - {fileID: 6487360836715806533, guid: b6aec0ba88b82124283bfac987e31139, type: 3}
   spawnPoint: {fileID: 0}
-  limit_Quantity_Spawn: 20
+  limit_Quantity_Spawn: 30
   time_to_Stop_Present: 0.5
   display_Blocks: {fileID: 344161761}
 --- !u!4 &391903962

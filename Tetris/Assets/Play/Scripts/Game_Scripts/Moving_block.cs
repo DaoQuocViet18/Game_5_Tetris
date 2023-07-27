@@ -133,7 +133,6 @@ public class Moving_block : MonoBehaviour
         {
             jun.gameObject.layer = 3;
             delete_Block.transform.position = new Vector2(delete_Block.transform.position.x, jun.transform.position.y);
-            Debug.Log("destroy: " + delete_Block.enough_Counting());
             if (delete_Block.enough_Counting())
             {
                 if (delete_Block.transform.position.y >= address_Destroy_Y)

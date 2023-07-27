@@ -26,10 +26,10 @@ public class Spawn_block : MonoBehaviour
     {
         // Sinh ra đối tượng tại vị trí spawnPoint
         Instantiate(objectPrefab[display_Blocks.number_block], spawnPoint.position, spawnPoint.rotation);
-        if (quantity_Spawn == limit_Quantity_Spawn && time_to_Stop_Present > 0.5f/4)
+        if (quantity_Spawn == limit_Quantity_Spawn && time_to_Stop_Present > 0.2f)
         {
             quantity_Spawn = 0;
-            time_to_Stop_Present /= 1.25f;
+            time_to_Stop_Present /= 1.2f;
         }    
         quantity_Spawn++;
     }
