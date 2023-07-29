@@ -35,11 +35,6 @@ public class Moving_block : MonoBehaviour
     private Display_blocks display_Blocks;
     private Delete_block delete_Block;
 
-    [Header("Sound")]
-    public AudioClip put_block_Sound; 
-    public AudioClip get_point_Sound; 
-    private AudioSource audioSource;
-
     private void Awake()
     {
         Transform[] childTransforms = GetComponentsInChildren<Transform>();
@@ -55,7 +50,6 @@ public class Moving_block : MonoBehaviour
         spawn_Block = GameObject.Find("Spawn_block").GetComponent<Spawn_block>();
         display_Blocks = GameObject.Find("Display_board").GetComponent<Display_blocks>();
         delete_Block = GameObject.Find("Block_detection").GetComponent<Delete_block>();
-        audioSource = GetComponent<AudioSource>();
 
         time_to_Delay = spawn_Block.time_to_Stop_Present;
         Invoke("Move_and_stop", 0.1f);     
@@ -126,7 +120,7 @@ public class Moving_block : MonoBehaviour
 
     public void Stop_and_destroy()
     {
-        audioSource.PlayOneShot(put_block_Sound);
+        display_Blocks.Put_Block_Sound();
         foreach (var item in block_junior)
             if (item.transform.position.y >= 4)
             {
@@ -142,7 +136,7 @@ public class Moving_block : MonoBehaviour
             delete_Block.transform.position = new Vector2(delete_Block.transform.position.x, jun.transform.position.y);
             if (delete_Block.enough_Counting())
             {
-                audioSource.PlayOneShot(get_point_Sound);
+                display_Blocks.Get_Point_Sound();
 
                 if (delete_Block.transform.position.y >= address_Destroy_Y)
                     address_Destroy_Y = delete_Block.transform.position.y;

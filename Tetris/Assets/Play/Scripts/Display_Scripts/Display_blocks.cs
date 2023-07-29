@@ -12,8 +12,15 @@ public class Display_blocks : MonoBehaviour
     public int score = 0; 
     public TextMeshProUGUI scoreText;
 
+    [Header("Sound")]
+    public AudioClip put_block_Sound;
+    public AudioClip get_point_Sound;
+    public AudioSource audioSource;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         Transform[] childTransforms = GetComponentsInChildren<Transform>();
         Block = new GameObject[childTransforms.Length - 1];
         for (int i = 1; i < childTransforms.Length; i++)
@@ -40,5 +47,15 @@ public class Display_blocks : MonoBehaviour
     {
         score += amount;
         scoreText.text = score.ToString();
+    }
+
+    public void Put_Block_Sound()
+    {
+        audioSource.PlayOneShot(put_block_Sound);
+    }
+
+    public void Get_Point_Sound()
+    {
+        audioSource.PlayOneShot(get_point_Sound);
     }
 }

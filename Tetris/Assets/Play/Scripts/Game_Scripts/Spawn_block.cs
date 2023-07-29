@@ -19,6 +19,8 @@ public class Spawn_block : MonoBehaviour
 
     [Header("Sound")]
     public AudioClip gameOver_Sound;
+    public AudioClip put_block_Sound;
+    public AudioClip get_point_Sound;
     public AudioSource audioSource;
 
     [Header("GameOver")]
