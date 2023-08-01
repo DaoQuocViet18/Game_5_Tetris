@@ -32,14 +32,12 @@ public class Display_blocks : MonoBehaviour
 
     public void ActivateRandomObject()
     {
-
         if (Block.Length > 0)
         {
             Block[number_block].SetActive(false);
             number_block = Random.Range(0, Block.Length);
 
-            GameObject randomObject = Block[number_block];
-            randomObject.SetActive(true);
+            Block[number_block].SetActive(true);
         }
     }
 

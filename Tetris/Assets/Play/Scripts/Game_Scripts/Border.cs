@@ -68,7 +68,7 @@ public class Border : MonoBehaviour
         return true;
     }
 
-    // Kiểm tra xem bưới tiết theo xuống dưới block có vật thể gì ko
+    // Kiểm tra xem bước tiếp theo xuống dưới block có vật thể gì ko
     public bool Check_block_Down()
     {
         foreach (GameObject block in moving_Block.block_junior)
