@@ -24,13 +24,13 @@ public class Moving_block : MonoBehaviour
     public bool stop_Game;
     public bool stop;
     public GameObject[] block_junior;
-    private Border border;
-    
+
     [Header("Delete")]
     private float address_Destroy_Y = -5f;
     private bool cancelled;
     private int quantity_destroy;
 
+    private Border border;
     private Spawn_block spawn_Block;
     private Display_blocks display_Blocks;
     private Delete_block delete_Block;
@@ -55,7 +55,7 @@ public class Moving_block : MonoBehaviour
         Invoke("Move_and_stop", 0.1f);     
     }
     void Update()
-    {    
+    {       
         if (!stop)
             move();
     }
@@ -71,6 +71,9 @@ public class Moving_block : MonoBehaviour
 
     private void move()
     {
+        Debug.DrawRay(block_junior[0].transform.position, Vector2.left * border.raycastDistance_left_right, Color.white);
+        Debug.DrawRay(block_junior[0].transform.position, Vector2.right * border.raycastDistance_left_right, Color.white);
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             stop = true;
@@ -80,25 +83,16 @@ public class Moving_block : MonoBehaviour
             Invoke("Stop_and_destroy", 0.1f);
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && border.Check_next_move() == true && gameObject.name != "Block (6)(Clone)")
-        {                      
-            transform.Rotate(0, 0, transform.position.z - 90f, Space.World);
-            border.Check_border_block();
-        }    
+        if (Input.GetKeyDown(KeyCode.UpArrow) && gameObject.name != "Block (6)(Clone)")
+            border.Next_spin(transform);  
 
         if (Input.GetKeyDown(KeyCode.DownArrow) && border.Check_block_Down() == false)
             transform.Translate(Vector2.down * speed_Down, Space.World); 
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) && border.Check_block_L() == true)
-        {
-            transform.Translate(Vector2.left * speed_move, Space.World);
-            border.Check_border_block();
-        }    
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && border.Check_block_R() == true)
-        {   
+            transform.Translate(Vector2.left * speed_move, Space.World);   
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && border.Check_block_R() == true)  
             transform.Translate(Vector2.right * speed_move, Space.World);
-            border.Check_border_block();
-        }
 
         transform.position = new Vector2(Mathf.Floor(transform.position.x / 0.1f) * 0.1f, transform.position.y);
     }
@@ -115,7 +109,7 @@ public class Moving_block : MonoBehaviour
             transform.Translate(Vector2.down * speed_Down, Space.World);
             border.Check_border_block();
             Invoke("Move_and_stop", time_to_Delay);
-        }    
+        }
     }
 
     public void Stop_and_destroy()

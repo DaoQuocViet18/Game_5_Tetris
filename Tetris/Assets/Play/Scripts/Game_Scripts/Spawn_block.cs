@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 public class Spawn_block : MonoBehaviour
 {
@@ -19,8 +18,6 @@ public class Spawn_block : MonoBehaviour
 
     [Header("Sound")]
     public AudioClip gameOver_Sound;
-    public AudioClip put_block_Sound;
-    public AudioClip get_point_Sound;
     public AudioSource audioSource;
 
     [Header("GameOver")]
@@ -53,11 +50,6 @@ public class Spawn_block : MonoBehaviour
 
         gameOver.SetActive(true);
         gameOver_Text.text = "SCORE: " + display_Blocks.score.ToString();
-    }
-
-    public void comeStartScene()
-    {
-        SceneManager.LoadScene("StartScene");
     }
 }
 

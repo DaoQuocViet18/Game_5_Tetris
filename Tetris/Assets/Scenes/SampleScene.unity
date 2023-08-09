@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 164166733}
   - component: {fileID: 164166732}
   - component: {fileID: 164166734}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -883,7 +883,7 @@ GameObject:
   - component: {fileID: 390856457}
   - component: {fileID: 390856458}
   m_Layer: 5
-  m_Name: gameOver_Canvas
+  m_Name: game_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1035,8 +1035,6 @@ MonoBehaviour:
   time_to_Stop_Present: 0.5
   display_Blocks: {fileID: 344161761}
   gameOver_Sound: {fileID: 8300000, guid: bba0d9767ee8ed64daa586c7abf1436a, type: 3}
-  put_block_Sound: {fileID: 8300000, guid: 7330b6329cbaeab469938e2c21f18c53, type: 3}
-  get_point_Sound: {fileID: 8300000, guid: 9b833c4fcb22cf0448fa36ca8bd2e3a7, type: 3}
   audioSource: {fileID: 0}
   gameOver: {fileID: 1676869891}
   gameOver_Text: {fileID: 962160302}
@@ -1065,7 +1063,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 241f402c37cc3ce459b8e66508bc569e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bbaa40d06d8e4b14da36361b1c694027, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1
@@ -1425,7 +1423,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19063725, g: 0.22745098, b: 0.28235295, a: 0}
+  m_BackGroundColor: {r: 0.19215687, g: 0.22745098, b: 0.28235295, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2011,7 +2009,7 @@ GameObject:
   - component: {fileID: 878478814}
   - component: {fileID: 878478813}
   - component: {fileID: 878478815}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Border : MonoBehaviour
 {   
@@ -30,42 +31,69 @@ public class Border : MonoBehaviour
         }      
     }
 
+    // xoay block
+    public void Next_spin(Transform transform)
+    {
+        bool up = false;
 
+        // block thay thế đến chỗ vị trí block hiện tại
+        block_Test[0].transform.position = transform.position;
+        block_Test[0].transform.rotation = transform.rotation;
+
+        // Nếu có block bị chạm vào tường --> dịnh sang bên
+        if (Check_block_L_to_spin() == true && Check_block_R_to_spin() == false)
+            block_Test[0].transform.Translate(Vector2.left * moving_Block.speed_move, Space.World);
+        else if (Check_block_R_to_spin() == true && Check_block_L_to_spin() == false)
+            block_Test[0].transform.Translate(Vector2.right * moving_Block.speed_move, Space.World);
+
+
+        // sự di chuyển xoay của block thay thế và phản ứng của nó đối với các block khác
+        block_Test[0].transform.Rotate(0, 0, transform.position.z - 90f, Space.World);
+
+        bool is_sticky = false;
+        // kiểm tra xem có dính phải block nào ko 
+        foreach (GameObject block_1 in block_Test)
+        {          
+            if (Physics2D.Raycast(block_1.transform.position, Vector2.left, raycastDistance_left_right * 0.5f, layerMask_Stop))
+            {
+                up = true;
+
+                block_Test[0].transform.position = transform.position;
+                block_Test[0].transform.Translate(Vector2.up * moving_Block.speed_Down, Space.World);
+
+                foreach (GameObject block_2 in block_Test)
+                    if (Physics2D.Raycast(block_2.transform.position, Vector2.left, raycastDistance_left_right * 0.5f, layerMask_Stop))
+                    {
+                        is_sticky = true;
+                        break;
+                    }    
+
+                break;
+            }    
+        }      
+            
+        if (!is_sticky)
+        {
+            transform.position = block_Test[0].transform.position;
+            transform.rotation = block_Test[0].transform.rotation;
+
+            if (up == true)
+            {
+                moving_Block.stop = true;
+                moving_Block.Stop_and_destroy();
+            }
+        }
+    }
 
     // kiểm tra xem có bị dính vào tường ko
-    public void Check_border_block ()
+    public void Check_border_block()
     {
         foreach (GameObject block in moving_Block.block_junior)
         {
             // Nếu block dính vào block khác --> dịch lên 1 ô
             if (Physics2D.Raycast(block.transform.position, Vector2.left, raycastDistance_left_right * 0.5f, layerMask_Stop))
                 transform.Translate(Vector2.up * moving_Block.speed_Down, Space.World);
-
-            // Nếu có block bị dính vào tường --> dịnh sang bên
-            if (block.transform.position.x <= -6)
-                transform.Translate(Vector2.right * moving_Block.speed_move, Space.World);
-            else if (block.transform.position.x >= 2)
-                transform.Translate(Vector2.left * moving_Block.speed_move, Space.World);
         }
-    }
-
-    // kiểm tra xem nếu quay thì có xảy ta va chạm không
-    public bool Check_next_move()
-    {
-        // sự di chuyển của block thay thế 
-        block_Test[0].transform.position = transform.position;
-        block_Test[0].transform.rotation = transform.rotation;
-        block_Test[0].transform.Rotate(0, 0, transform.position.z - 90f, Space.World);
-
-        foreach (GameObject block in block_Test)
-            if (Physics2D.Raycast(block.transform.position, Vector2.left, raycastDistance_left_right * 0.5f, layerMask_Stop))
-                block_Test[0].transform.Translate(Vector2.up * moving_Block.speed_Down, Space.World);
-
-        // kiểm tra 
-        foreach (GameObject block in block_Test)
-            if (Physics2D.Raycast(block.transform.position, Vector2.left, raycastDistance_left_right * 0.5f, layerMask_Stop))
-                return false;
-        return true;
     }
 
     // Kiểm tra xem bước tiếp theo xuống dưới block có vật thể gì ko
@@ -76,6 +104,23 @@ public class Border : MonoBehaviour
                 return true;
         return false;
     }
+
+    // Kiểm tra xem bên trái block có vật thể gì ko 
+    public bool Check_block_L_to_spin()
+    {
+        if (Physics2D.Raycast(moving_Block.block_junior[0].transform.position, Vector2.left, raycastDistance_left_right, layerMask_Stop))
+            return false;
+        return true;
+    }
+
+    // Kiểm tra xem bên phải block có vật thể gì ko
+    public bool Check_block_R_to_spin()
+    {
+        if (Physics2D.Raycast(moving_Block.block_junior[0].transform.position, Vector2.right, raycastDistance_left_right, layerMask_Stop))
+            return false;
+        return true;
+    }
+
 
     // Kiểm tra xem bên trái block có vật thể gì ko 
     public bool Check_block_L()
