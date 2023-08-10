@@ -26,7 +26,6 @@ public class Moving_block : MonoBehaviour
     public GameObject[] block_junior;
 
     [Header("Delete")]
-    private float address_Destroy_Y = -5f;
     private bool cancelled;
     private int quantity_destroy;
 
@@ -80,7 +79,7 @@ public class Moving_block : MonoBehaviour
             Vector2 teleport_Distance = Teleport_Distance();
             transform.Translate(teleport_Distance, Space.World);
             
-            Invoke("Stop_and_destroy", 0.1f);
+            Invoke("Call_S_and_D", 0.1f);
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && gameObject.name != "Block (6)(Clone)")
@@ -94,15 +93,18 @@ public class Moving_block : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.RightArrow) && border.Check_block_R() == true)  
             transform.Translate(Vector2.right * speed_move, Space.World);
 
+        // chuyển tọa độ về số thập phân đầu tiên
         transform.position = new Vector2(Mathf.Floor(transform.position.x / 0.1f) * 0.1f, transform.position.y);
+
+        // loại bỏ sai số bằng cách làm tròn về dạng bội số của 0.5f
+        transform.position = new Vector2(Mathf.Floor(transform.position.x / 0.5f) * 0.5f, transform.position.y);
     }
 
     private void Move_and_stop()
     {
         if (!stop && border.Check_block_Down() == true)
         {
-            stop = true;
-            Stop_and_destroy();
+            Call_S_and_D();
         }
         else if (!stop)
         {
@@ -112,7 +114,13 @@ public class Moving_block : MonoBehaviour
         }
     }
 
-    public void Stop_and_destroy()
+    public void Call_S_and_D()
+    {
+        stop = true;
+        StartCoroutine(Stop_and_destroy());
+    }    
+
+    public IEnumerator Stop_and_destroy()
     {
         display_Blocks.Put_Block_Sound();
         foreach (var item in block_junior)
@@ -121,31 +129,52 @@ public class Moving_block : MonoBehaviour
                 stop_Game = true;
                 spawn_Block.EndGame();
                 goto End;
-            }    
+            }
 
 
+        // tìm kiếm các hàng đã đầy
+        List<float> address_Destroy_Y = new List<float>();
         foreach (GameObject jun in block_junior)
         {
             jun.gameObject.layer = 3;
             delete_Block.transform.position = new Vector2(delete_Block.transform.position.x, jun.transform.position.y);
-            if (delete_Block.enough_Counting())
-            {
-                display_Blocks.Get_Point_Sound();
 
-                if (delete_Block.transform.position.y >= address_Destroy_Y)
-                    address_Destroy_Y = delete_Block.transform.position.y;
-                delete_Block.destroy_Block();
-                cancelled = true;
-                quantity_destroy++;
-            }
+            if (delete_Block.Enough_Counting())
+                address_Destroy_Y.Add(delete_Block.transform.position.y);
         }
 
+
+        // đánh dấy ản hủy lên các hàng đó
+        foreach (float add_y in address_Destroy_Y)
+        {
+            delete_Block.transform.position = new Vector2(delete_Block.transform.position.x, add_y);
+            delete_Block.Effect_Detroy();
+        }
+        yield return new WaitForSeconds(0.2f);
+        display_Blocks.Get_Point_Sound();
+
+
+        // hủy các hàng đó
+        foreach (float add_y in address_Destroy_Y)
+        {
+            delete_Block.transform.position = new Vector2(delete_Block.transform.position.x, add_y);
+
+            delete_Block.Destroy_Block();
+            cancelled = true;
+            quantity_destroy++;
+        }
+
+
+        // các hàng khác rơi xuống
         if (cancelled)
+        {
+            int i = 0;
             do
             {
-                delete_Block.move_Block_after_destroy(address_Destroy_Y);
-                quantity_destroy--;
-            } while (quantity_destroy > 0);
+                delete_Block.Move_Block_after_destroy(address_Destroy_Y[i]);
+                i++;
+            } while (i < quantity_destroy);
+        }    
 
         Invoke("Spawn", 0.5f);
         End:;

@@ -79,8 +79,7 @@ public class Border : MonoBehaviour
 
             if (up == true)
             {
-                moving_Block.stop = true;
-                moving_Block.Stop_and_destroy();
+                moving_Block.Call_S_and_D();
             }
         }
     }

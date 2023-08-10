@@ -8,6 +8,7 @@ public class Delete_block : MonoBehaviour
     [Header("block detection")]
     public float raycastDistance = 0.125f;
     public LayerMask layerMask_Stop;
+    public Sprite Dead_Sprite;
 
     [Header("Move down")]
     public float speed_Down = 0.5f;
@@ -20,7 +21,7 @@ public class Delete_block : MonoBehaviour
         display_Blocks = GameObject.Find("Display_board").GetComponent<Display_blocks>();
     }
 
-    public  bool enough_Counting()
+    public bool Enough_Counting()
     {
         int collisionCount = 0;
         for (int i = 1; i <= 15; i++)
@@ -30,11 +31,25 @@ public class Delete_block : MonoBehaviour
                 collisionCount++;   
             else
                 return false;
-        }
+        } 
+
         return true;
     }
 
-    public void destroy_Block()
+    public void Effect_Detroy()
+    {
+        for (int i = 1; i <= 15; i++)
+        {
+            Vector2 tra = new Vector2(transform.position.x + i * 0.5f, transform.position.y);
+            RaycastHit2D hit2D = Physics2D.Raycast(tra, Vector2.down, raycastDistance, layerMask_Stop);
+
+            SpriteRenderer targetSpriteRenderer = hit2D.collider.gameObject.GetComponent<SpriteRenderer>();
+
+            targetSpriteRenderer.sprite = Dead_Sprite;
+        }
+    }
+
+    public void Destroy_Block()
     {
         for (int i = 1; i <= 15; i++)
         {
@@ -46,8 +61,8 @@ public class Delete_block : MonoBehaviour
         display_Blocks.IncreaseScore(1);
 
     }
-    public void move_Block_after_destroy(float posY)
-    {     
+    public void Move_Block_after_destroy(float posY)
+    {
         do
         {
             posY += 0.5f;
