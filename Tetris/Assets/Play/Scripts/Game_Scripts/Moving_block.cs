@@ -186,14 +186,14 @@ public class Moving_block : MonoBehaviour
 
         foreach (var item in block_junior)
         {
-            RaycastHit2D hit = Physics2D.Raycast(item.transform.position, Vector2.down, border.raycastDistance * (1 + 18 * 2), border.layerMask_Stop);
+            RaycastHit2D hit = Physics2D.Raycast(item.transform.position, Vector2.down, Mathf.Infinity, border.layerMask_Stop);
 
             float distance = Vector2.Distance(item.transform.position, hit.point);
             if (hit.collider != null && distance < shortestDistance)
                 shortestDistance = distance;
         }
 
-        return new Vector2(0, -shortestDistance + 0.25f);
+        return new Vector2(0, -shortestDistance + border.raycastDistance);
     }
 
 }
