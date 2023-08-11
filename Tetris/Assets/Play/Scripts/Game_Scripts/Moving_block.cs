@@ -93,11 +93,8 @@ public class Moving_block : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.RightArrow) && border.Check_block_R() == true)  
             transform.Translate(Vector2.right * speed_move, Space.World);
 
-        // chuyển tọa độ về số thập phân đầu tiên
-        transform.position = new Vector2(Mathf.Floor(transform.position.x / 0.1f) * 0.1f, transform.position.y);
-
-        // loại bỏ sai số bằng cách làm tròn về dạng bội số của 0.5f
-        transform.position = new Vector2(Mathf.Floor(transform.position.x / 0.5f) * 0.5f, transform.position.y);
+        // chuyển tọa độ về số thập phân đầu tiên và làm tròn về dạng bội số của 0.5f
+        transform.position = new Vector2(Mathf.Floor(transform.position.x / 0.5f + 0.25f) * 0.5f, transform.position.y);
     }
 
     private void Move_and_stop()
