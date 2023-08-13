@@ -9,6 +9,8 @@ public class ObjectScaler : MonoBehaviour
     private RectTransform referenceRectTransform; // RectTransform của đối tượng tham chiếu để tính tỉ lệ
 
     public  TextMeshProUGUI text;
+    public float scale_button = 0.1f;
+    public float scale_image = 0.2f;
 
     // Tỉ lệ giữa kích thước của đối tượng tham chiếu và kích thước màn hình
     private float scale_reference_Ratio;
@@ -25,15 +27,15 @@ public class ObjectScaler : MonoBehaviour
         // Tính toán tỉ lệ giữa kích thước của đối tượng tham chiếu và kích thước màn hình
         if (gameObject.name == "Start_Button" || gameObject.name == "Home_Button")
         {
-            scaleYRatio = 0.1f;
+            scaleYRatio = scale_button;
         }
         else if (gameObject.name == "Image (5)")
         {
-            scaleYRatio = 0.35f;
+            scaleYRatio = scale_image * 1.5f;
         }
         else
         {
-            scaleYRatio = 0.2f;
+            scaleYRatio = scale_image;
         }
 
         scale_reference_Ratio = referenceRectTransform.rect.width / referenceRectTransform.rect.height;
